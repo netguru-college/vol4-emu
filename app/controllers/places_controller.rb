@@ -1,18 +1,12 @@
 class PlacesController < ApplicationController
 
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+
   def index
     @places = Place.all
-=begin
-    if params[:search].present?
-      @places = Place.near(params[:search], 50, :order => :distance)
-    else
-      @places = Place.all
-    end
-=end
   end
 
   def show
-    @place = Place.find(params[:id])
   end
 
   def new
@@ -29,11 +23,9 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    @place = Place.find(params[:id])
   end
 
   def update
-    @place = Place.find(params[:id])
     if @place.update_attributes(params[:location])
       redirect_to @place, :notice => "Successfully updated location."
     else
@@ -43,11 +35,16 @@ class PlacesController < ApplicationController
 
   def destroy
     @place.destroy
-    flash[:danger] = "The article was destroyed"
     redirect_to places_path
+    flash[:danger] = "The place was destroyed"
   end
 
   private
+
+  def set_article
+    @place = Place.find(params[:id])
+  end
+
 
   def place_params
     params.require(:place).permit(:address)
