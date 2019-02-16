@@ -1,9 +1,5 @@
-<h1>Title</h1>
+<h1>My Places </h1>
 <%= form_tag places_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Near", :name => nil %>
-  </p>
 <% end %>
 
 <table>
@@ -18,13 +14,11 @@
       <td><%= place.latitude %></td>
       <td><%= place.longitude %></td>
       <td><%= link_to "Show", place_path(place), class: "tn btn-info" %></td>
-      <td><%=  link_to "Edit", edit_place_path(place), class: "btn btn-xs btn-primary" %></td>
+      <td><%= link_to "Edit", edit_place_path(place), class: "btn btn-xs btn-primary" %></td>
       <!--  <td><%#= link_to "Destroy", place, confirm: 'Are you sure?', method: :delete %>-->
       <td> <%= link_to "Delete ", place_path(place), method: :delete,
                        data: {confirm: "Are you sure you want to delete the article?"},
                        class: "btn btn-xs btn-danger" %> </td>
-
-
     </tr>
   <% end %>
 </table>

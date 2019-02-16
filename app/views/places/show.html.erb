@@ -1,3 +1,4 @@
+<h1>The Meeting Place</h1>
 <p>
   <strong>Address:</strong>
   <%= @place.address %>
@@ -11,7 +12,22 @@
   <%= @place.longitude %>
 </p>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}" %>
+<strong>Contact:</strong>
+<%= @place.contact %>
+</p>
+
+<strong>Day:</strong>
+<%= @place.day %>
+</p>
+
+<strong>Hour:</strong>
+<%= @place.hour %>
+</p>
+
+<p><%= link_to "My Places", places_path %></p>
+<p><%= link_to "Edit", edit_place_path(@place), class: "btn btn-xs btn-primary" %></p>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=color:red#{@place.latitude}%2C#{@place.longitude}" %>
 
 
 

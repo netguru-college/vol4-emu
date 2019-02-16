@@ -1,15 +1,32 @@
 <%= form_for @place do |f| %>
 
   <p>
-    <%= f.label :address %><br />
+    <%= f.label :address %><br/>
     <%= f.text_field :address %>
   </p>
+
   <p>
-    <%= f.label :latitude %><br />
+    <%= f.label :contact %><br/>
+    <%= f.text_field :contact %>
+  </p>
+
+  <p>
+    <%= f.label :day %><br/>
+    <%= f.text_field :day %>
+  </p>
+
+  <p>
+    <%= f.label :hour %><br/>
+    <%= f.text_field :hour %>
+  </p>
+
+  <p>
+    <%= f.label :latitude %><br/>
     <%= f.text_field :latitude %>
   </p>
+
   <p>
-    <%= f.label :longitude %><br />
+    <%= f.label :longitude %><br/>
     <%= f.text_field :longitude %>
   </p>
   <p><%= f.submit %></p>

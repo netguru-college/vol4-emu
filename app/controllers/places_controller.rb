@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
   end
 
   def update
-    if @place.update_attributes(params[:location])
+    if @place.update_attributes(place_params)
       redirect_to @place, :notice => "Successfully updated location."
     else
       render :action => 'edit'
@@ -47,7 +47,7 @@ class PlacesController < ApplicationController
 
 
   def place_params
-    params.require(:place).permit(:address)
+    params.require(:place).permit(:address, :contact, :day, :hour)
   end
 
 end
