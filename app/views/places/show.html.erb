@@ -1,29 +1,27 @@
-<% title "Location" %>
-
 <p>
   <strong>Address:</strong>
-  <%= @location.address %>
+  <%= @place.address %>
 </p>
 <p>
   <strong>Latitude:</strong>
-  <%= @location.latitude %>
+  <%= @place.latitude %>
 </p>
 <p>
   <strong>Longitude:</strong>
-  <%= @location.longitude %>
+  <%= @place.longitude %>
 </p>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}" %>
 
-<h3>Nearby locations</h3>
+<h3>Nearby places</h3>
 <ul>
-<% for location in @location.nearbys(10) %>
-  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
-<% end %>
+  <% @places.each do  |place| %>
+    <li><%= link_to place.address, place %> (<%= place.distance.round(2) %> miles)</li>
+  <% end %>
 </ul>
 
 <p>
-  <%= link_to "Edit", edit_location_path(@location) %> |
-  <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", locations_path %>
+  <%= link_to "Edit", edit_place_path(@place) %> |
+  <%= link_to "Destroy", @place, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", places_path %>
 </p>

@@ -17,10 +17,13 @@ gem 'devise'
 gem 'rubocop', '~> 0.64.0', require: false
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'geocoder'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
@@ -31,7 +34,7 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers', '4.0.0.rc1'
+  gem 'shoulda-matchers'
   gem 'rails-controller-testing'
 end
 
