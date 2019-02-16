@@ -15,8 +15,11 @@ gem 'pundit'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'rubocop', '~> 0.64.0', require: false
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'jquery-rails'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+
 gem 'geocoder'
 
 group :development, :test do
