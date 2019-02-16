@@ -1,11 +1,14 @@
-class PlacesController<ApplicationController
+class PlacesController < ApplicationController
 
   def index
+    @places = Place.all
+=begin
     if params[:search].present?
       @places = Place.near(params[:search], 50, :order => :distance)
     else
       @places = Place.all
     end
+=end
   end
 
   def show
@@ -17,7 +20,7 @@ class PlacesController<ApplicationController
   end
 
   def create
-    @place = Place.new(params[:place])
+    @place = Place.new(place_params)
     if @place.save
       redirect_to @place, :notice => "Successfully created place."
     else
@@ -32,7 +35,7 @@ class PlacesController<ApplicationController
   def update
     @place = Place.find(params[:id])
     if @place.update_attributes(params[:location])
-      redirect_to @place, :notice  => "Successfully updated location."
+      redirect_to @place, :notice => "Successfully updated location."
     else
       render :action => 'edit'
     end
@@ -42,6 +45,12 @@ class PlacesController<ApplicationController
     @place = Place.find(params[:id])
     @place.destroy
     redirect_to places_url, :notice => "Successfully destroyed location."
+  end
+
+  private
+
+  def place_params
+    params.require(:place).permit(:address)
   end
 
 end
