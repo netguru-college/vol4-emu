@@ -42,9 +42,9 @@ class PlacesController < ApplicationController
   end
 
   def destroy
-    @place = Place.find(params[:id])
     @place.destroy
-    redirect_to places_url, :notice => "Successfully destroyed location."
+    flash[:danger] = "The article was destroyed"
+    redirect_to places_path
   end
 
   private
