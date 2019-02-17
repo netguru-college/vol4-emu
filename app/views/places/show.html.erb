@@ -24,10 +24,10 @@
 <%= @place.hour %>
 </p>
 
-<p><%= link_to "My Places", places_path %></p>
+
+<p>
+  <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{@place.latitude},#{@place.longitude}&key=#{'AIzaSyDGxp3TxEkOY9b5eWj4nRiBBGMeYULdSSI'}", alt: "Map" %>
+</p>
+
+<p><%= link_to "My Places", places_path, class: "btn btn-success" %></p>
 <p><%= link_to "Edit", edit_place_path(@place), class: "btn btn-xs btn-primary" %></p>
-
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=color:red#{@place.latitude}%2C#{@place.longitude}" %>
-
-
-
