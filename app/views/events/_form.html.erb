@@ -1,0 +1,29 @@
+<%= form_for @event do |f| %>
+
+  <p>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :capacity %><br/>
+    <%= f.text_field :capacity %>
+  </p>
+
+  <p>
+    <%= f.label :starts %><br/>
+    <%= f.text_field :started_at %>
+  </p>
+
+  <p>
+    <%= f.label :end %><br/>
+    <%= f.text_field :ended_at %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br/>
+    <%= f.text_field :description %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>
