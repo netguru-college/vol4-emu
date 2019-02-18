@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 2019_02_18_110545) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sports", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.string "role"
     t.bigint "event_id"
@@ -59,8 +63,8 @@ ActiveRecord::Schema.define(version: 2019_02_18_110545) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "comments", "events"
-  add_foreign_key "comments", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
 end
