@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_110545) do
+ActiveRecord::Schema.define(version: 2019_02_18_143448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +35,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_110545) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sports", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "participations", force: :cascade do |t|
     t.string "role"
     t.bigint "event_id"
@@ -47,6 +43,21 @@ ActiveRecord::Schema.define(version: 2019_02_18_110545) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_participations_on_event_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.integer "level"
+    t.bigint "user_id"
+    t.bigint "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_skills_on_sport_id"
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
+  create_table "sports", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,13 +69,18 @@ ActiveRecord::Schema.define(version: 2019_02_18_110545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
+    t.string "avatar"
+    t.text "description"
+    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "participations", "events"
-  add_foreign_key "participations", "users"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "users"
+  add_foreign_key "skills", "sports"
+  add_foreign_key "skills", "users"
 end
