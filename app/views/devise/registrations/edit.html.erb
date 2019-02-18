@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="field">
-<%= f.input :password,hint: "leave it blank if you don't want to change it",required: false,  input_html: { autocomplete: "new-password" } %>
+  <%= f.input :password,hint: "leave it blank if you don't want to change it",required: false,  input_html: { autocomplete: "new-password" } %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -42,6 +42,10 @@
   <div class="field">
     <%= f.input :description, as: :text, hint: 'Write something about you :)' %>
   </div>
+
+  <%= f.simple_fields_for :skills do |s| %>
+    <%= s.input :level %>
+  <% end %>
 
   <div class="actions">
     <%= f.button :submit, "Confim changes" %>

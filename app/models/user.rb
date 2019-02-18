@@ -6,7 +6,11 @@ class User < ApplicationRecord
   has_many :participations
   has_many :events, through: :participations
   has_many :comments
+  
   mount_uploader :avatar, AvatarUploader
+  
   has_many :skills
   has_many :sports, through: :skills
+
+  accepts_nested_attributes_for :skills
 end
