@@ -1,2 +1,5 @@
-
 <h1>Hello, Rails!</h1>
+
+<%= link_to 'signup', new_user_registration_path %> <br>
+<%= link_to 'edit', edit_user_registration_path %> <br>
+<%= link_to 'logout', destroy_user_session_path, method: :delete %>
