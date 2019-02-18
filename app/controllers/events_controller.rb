@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update_attributes(event_params)
-      redirect_to @event, :notice => "Successfully updated location."
+      redirect_to @event, :notice => "Event was updated."
     else
       render 'edit'
     end
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to events_path
-    flash[:danger] = "The place was destroyed"
+    flash[:danger] = "Event was destroyed"
   end
 
   private
