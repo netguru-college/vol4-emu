@@ -35,11 +35,19 @@
     <%= f.input :avatar, as: :file %>
   </div>
 
+  <div class="field">
+    <%= f.input :city, hint: 'Where do you live?' %>
+  </div>
+
+  <div class="field">
+    <%= f.input :description, as: :text, hint: 'Write something about you :)' %>
+  </div>
+
   <div class="actions">
     <%= f.button :submit, "Confim changes" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<%# <h3>Cancel my account</h3> %>
 
 <%= link_to "Back", :back %>
