@@ -27,4 +27,6 @@
 /config/master.key
 
 
+/.idea/*
+public/uploads/*
 .idea
