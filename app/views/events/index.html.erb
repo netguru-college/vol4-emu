@@ -1,53 +1,17 @@
-<div class="container-menu">
-      <div class="logo">
-        <%=image_tag('logo-small.png')%>
-        </div>
-        <div class="nav">
-        <ul>
-          <li class="create-event">Create new event</li>
-          <% if user_signed_in? %>
-            <li class="item">
-              <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-            </li>
-            <li class="item">
-              <%= link_to 'Edit Profile', edit_user_registration_path %>
-            </li>
-          <% else %>
-          <li class="item">
-            <%= link_to 'Log In', new_user_session_path %>
-          </li>
-          <li class="item">
-            <%= link_to 'Register', new_user_registration_path %> <br>
-          </li>
-          <% end %>
-
-        </ul>
-      </div>
-</div>
-<div class="container-header">
+<%= render 'navbar' %>
+<div class="container-body">
   <div class="row">
     <div class="col-12">
-      <h1 class="app-title">Get ready to TeamUp</h1>
-      <p>Meet great players</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container-body">
-<div class="row">
-  <div class="col-12">
-
-    <% @events.each do |event| %>
-    <table class="event-container">
+      <% @events.each do |event| %>
+      <table class="event-container">
         <tr>
           <td class="time"><%=event.started_at.to_date() %></td>
           <td class="event-title"><%= event.title %></td>
           <td>Capacity: <%= event.capacity %></td>
           <td class="ball"><%=image_tag('football.png')%></td>
-          </tr>
+        </tr>
       </table>
-    <% end %>
-
+      <% end %>
+    </div>
   </div>
-  </div>
-  </div>
+</div>
