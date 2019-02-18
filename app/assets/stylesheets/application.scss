@@ -12,3 +12,155 @@
  *
  */
  @import "bootstrap";
+
+ body {
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   background-color: #fafafa;
+ }
+
+ .app-title {
+   font-family: helvetica, sans-serif;
+   text-align: center;
+   font-size: 50px;
+   color: white;
+   margin: 0px;
+   margin-top: 40px;
+   width: 100%;
+ }
+
+ .container-body {
+   width: 80%;
+   margin: auto;
+ }
+
+ .container-menu{
+  margin-top: 0px;
+  font-size: 20px;
+  background-color: white;
+  width: 100%;
+  height: 90px;
+}
+
+ .container-header p{
+  margin: 20px;
+  font-size: 20px;
+  opacity: 0.9;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  margin-bottom: 70px;
+}
+
+ .container-header{
+  background-color: #43e05a;
+  margin-bottom: 50px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e2dede;
+ }
+
+ .event-container {
+  padding: 0px;
+  display: block;
+  background: white;
+  margin: 0 auto;
+  width: 80%;
+  opacity: 0.9;
+  border: 1px solid rgba(0,0,0,.12);
+   float: left;
+}
+.event-container td {
+  padding: 40px;
+  margin: auto;
+  width: auto;
+}
+
+.event-title{
+  font-family: helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: black;
+  text-align: left;
+  width: 100%;
+  padding-left: 30px;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+}
+.event-title td {
+  width: 100%;
+}
+.event-text {
+  width: 100%;
+  display: block;
+}
+.event-text p{
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding-left: 100px;
+  text-align: left;
+}
+.event-text td {
+  width: 100%;
+  display: block;
+  color: rgba(0,0,0,.54);
+}
+
+.logo img{
+  float:left;
+  display: block;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.nav{
+  float:right;
+  margin-right: 30px;
+ padding-top: 15px;
+}
+.nav li {
+  display: inline-block;
+  padding: 30px;
+  padding-top: 15px;
+  text-align: center;
+
+}
+
+.create-event{
+  color: #43e05a;
+}
+
+.item{
+  color: gray;
+}
+.row{
+  width: 100%;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+tr {
+  width: 100%;
+  display: block;
+}
+
+.time{
+  padding: 10px;
+  text-align: center;
+  color: rgba(0,0,0,.54);
+  font-size: 18px;
+  width: 100%;
+}
+.ball{
+  text-align: right;
+}
+
+.ball img{
+  width: 50px;
+  height: 50px;
+}

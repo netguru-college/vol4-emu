@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :events, through: :participations
   has_many :comments
   mount_uploader :avatar, AvatarUploader
+  has_many :skills
+  has_many :sports, through: :skills
 end
