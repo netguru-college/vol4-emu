@@ -18,7 +18,7 @@
 </p>
 
 
-<p><%= link_to "My Events", events_path, class: "btn btn-success" %></p>
+<p><%= link_to "Back", events_path, class: "btn btn-success" %></p>
 <p><%= link_to "Edit", edit_event_path(@event), class: "btn btn-xs btn-primary" %></p>
 
 <p> <%= link_to "Delete ", event_path(@event), method: :delete,
@@ -41,18 +41,5 @@
 <% end %>
 <table>
 
-  <% @event.comments.each do |comment| %>
-    <tr>
-      <td><%= comment.body %></td>
-    </tr>
-  <% end %>
-
-
-  <%= simple_form_for @event.comments.build, :url => event_comments_path(@event) do |comment| %>
-    <p>
-      <%= comment.input :body %>
-    </p>
-    <p>
-      <%= comment.button :submit, class: "Create" %>
-    </p>
-  <% end %>
+<%= render partial: 'comments/show'%>
+<%= render partial: 'comments/form'%>
