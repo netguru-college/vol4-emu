@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+- 2.6.1
+before_install:
+- gem install bundler
+before_script:
+- cp config/database.yml.ci config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+script:
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
+env:
+  global:
+    secure: MeOyhRufP24+LUeowN7/BtanAxnK2NJX9FpmsVBxUIpNls0RpnIG4SLwxbAnrxX69UhE1PMy0wbH3UIGW6Jw5Tx1UhnZBuEidml8DW7rlxRrMSRpZ3iyVNzOHMbL8FmwsTMWHckMAJjJZW/PlGQnP8S4s42lpvToMY34Nziyo5BxRWr3bLEq7FPHmi3Rfc0eb6gQ+XKuSOBay2qRum3TJehIwQvPd5rQUX6vyQfMUZbWeXoePxH0su4YHMqf/vmK+vY1Ouo2fCIF9SgtBeZnhSblTmAlFqnnrNj2NlWO6/ECSmf3OMpu2kTAe9MU0oghoKDKJcki3aLyCaQdoe1xEBsZ2Cks08UVLQrHLPtorI4gnrrmiKE3BYu3sYG0erTUXj0+1JXb/h05QMieyweeFBzqM+mhTmBhhsYQ9TZQuKlzlXZ7v3jBVF2PaVWqQ9VVq9tTe6rZRc/Rd55JyjaMmAEM8eAj5AyCqZJlWn4wuznx4LTBUx5o5rTmIgmul8QnhvS9bY3QKZg+ewxaBonHGqROg74PUv1oy74yvQAfwGucaKF3gIomJ9bgx4ynr41psHLmaKRooNxkkUFhuWvb5aPxOW3jEeAQX6eIDxHXldmNn6UajuGr9i2UzW+QFDNe09HLMeSVVFF3lKePKLrfROBQN/+ZsuYYcY70MuF2oZE=
+deploy:
+  provider: heroku
+  api_key:
+    secure: jOBnxuyyv/1vyrWD481Jzj9UfYrPjPm5Hshx5LnuDnshON++cAlQ6jAX/4Wt+ByOHeoGBcBC4ZbNY7S+ZAtmqucsQP9wqVzi6amQzt5As9GXZ4sLGt4LrEHPP5reuo+/bFasM2TxemlIBA4ObFwDgE0TRrz5IztX1OhfNVGO+5M0l1JdCAYcu/NJ3il8ydSgTQg+ykXoXynTbmntwsRlijSyDk4BkJm7vjIV5LmK1lN1EOWIkxC9++DkHWzhZUfuonrN5o7XuJx1ODpCh5Tcj32vzegShpjmPszcrVYKh7ZLd0HGoiRirtDGJdP1fQvVm/zdfI6YOvORNuhmqJv4rqsnpqn8Bmu/hK39QQr1afvnm3hY7CMeu3MmdPCpMufwBiqhOx5a0gNJxRQL8Y6z637VIa3EjdJkgxhejiVH4/9hAxn8/hN12/zOWOeKWwx5r9hsgBRbMW68s7oFGf8oaUmLWzBglcZbwuR1vlOwyIxBD/xB/SjoGPGopdBD6PrCBWBpPjfD4o/7NeGvjL0G24/CnKfYx67ZkdD4DrhTPOUIw5dZTWV54TAeNV9VfiqDweDicol+nPNaMaCdKYIptUrsxNSd5ty5DN4a0esF76D5DPGF+JMHs1KSd8zkTD3SocpWXif/gUhpfRYeMbSIlirTFL9Rcj9UKskDS1xV3hg=
+  app: vol4-emu
+  on:
+    repo: netguru-code-college/vol4-emu
