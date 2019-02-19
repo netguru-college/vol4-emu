@@ -7,11 +7,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(
        :account_update,
         keys: [
-          :email, :username, :password, :password_confirmation, :current_password, 
+          :email, :username, :password, :password_confirmation, :current_password,
           :avatar, :description, :city,
-          skills_attributes: [:id, :level, :sport_id, :_destroy] 
+          skills_attributes: [:id, :level, :sport_id, :_destroy]
         ]
       )
-  end  
+      devise_parameter_sanitizer.permit(
+         :sign_up,
+          keys: [
+            :email, :username, :password, :password_confirmation
+          ]
+        )
+  end
 
 end
