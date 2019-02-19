@@ -18,7 +18,7 @@
 </p>
 
 
-<p><%= link_to "My Events", events_path, class: "btn btn-success" %></p>
+<p><%= link_to "Back", events_path, class: "btn btn-success" %></p>
 <p><%= link_to "Edit", edit_event_path(@event), class: "btn btn-xs btn-primary" %></p>
 
 <p> <%= link_to "Delete ", event_path(@event), method: :delete,
@@ -40,3 +40,6 @@
   </tr>
 <% end %>
 <table>
+
+<%= render partial: 'comments/show'%>
+<%= render partial: 'comments/form'%>
