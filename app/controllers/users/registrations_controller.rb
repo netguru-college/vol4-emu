@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         keys: [
           :email, :username, :password, :password_confirmation, :current_password, 
           :avatar, :description, :city,
-          skills_attributes: [:level, :sport_id, :_destroy] 
+          skills_attributes: [:id, :level, :sport_id, :_destroy] 
         ]
       )
   end  
