@@ -1,7 +1,11 @@
-<%= simple_form_for @event do |f| %>
+<%= simple_nested_form_for @event do |f| %>
 
   <p>
     <%= f.input :title %>
+  </p>
+
+  <p>
+    <%= f.association :sport %>   
   </p>
 
   <p>
