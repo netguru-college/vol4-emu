@@ -1,6 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_nested_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -10,10 +10,6 @@
   <div>
      <%= f.input :username, autofocus: true %>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
 
   <div class="field">
   <%= f.input :password,hint: "leave it blank if you don't want to change it",required: false,  input_html: { autocomplete: "new-password" } %>
@@ -43,9 +39,30 @@
     <%= f.input :description, as: :text, hint: 'Write something about you :)' %>
   </div>
 
-  <%# <%= f.simple_fields_for :skills do |s| %>
-    <%# <%= s.input :level %>
-  <%# <% end %>
+  <div id="user-skills">
+
+    <div id="user-skills-form">
+      <% f.fields_for(:skills) do |ff| %>
+        <%= ff.label :level%>
+        <%= ff.text_field :level %>
+
+        <%= ff.label :sport_id %>
+        <%= ff.text_field :sport_id %>
+
+        <div class="remove-skill">
+          <%= ff.link_to_remove do %>
+  	        <button type="button">Remove skill</button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="add-skill">
+      <%= f.link_to_add :skills, :data => { :target => "#user-skills-form" } do %>
+        <button type="button">+ Add another skill</button>
+      <% end %>
+    </div>
+  </div>
 
   <div class="actions">
     <%= f.button :submit, "Confim changes" %>
