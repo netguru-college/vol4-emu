@@ -19,4 +19,3 @@ deploy:
   app: vol4-emu
   on:
     repo: netguru-code-college/vol4-emu
-    branch: travis
