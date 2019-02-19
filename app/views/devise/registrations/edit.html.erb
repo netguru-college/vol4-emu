@@ -1,6 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_nested_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_nested_form_for(@user, :url => registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -40,28 +40,33 @@
   </div>
 
   <div id="user-skills">
+    <hr>
+    <%= f.label :'My Skills' %>
 
     <div id="user-skills-form">
-      <% f.fields_for(:skills) do |ff| %>
-        <%= ff.label :level%>
-        <%= ff.text_field :level %>
+      <%= f.fields_for(:skills) do |skill| %>
+      
+        <%= skill.label :level %>
+        <%= skill.text_field :level %>
 
-        <%= ff.label :sport_id %>
-        <%= ff.text_field :sport_id %>
+        <%= skill.label :sport_id %>
+        <%= skill.text_field :sport_id %>
 
         <div class="remove-skill">
-          <%= ff.link_to_remove do %>
+          <%= skill.link_to_remove do %>
   	        <button type="button">Remove skill</button>
           <% end %>
         </div>
       <% end %>
     </div>
+    <hr>
 
     <div id="add-skill">
       <%= f.link_to_add :skills, :data => { :target => "#user-skills-form" } do %>
-        <button type="button">+ Add another skill</button>
+        <button type="button">+ Add skill</button>
       <% end %>
     </div>
+
   </div>
 
   <div class="actions">

@@ -13,10 +13,4 @@ class User < ApplicationRecord
   has_many :sports, through: :skills
 
   accepts_nested_attributes_for :skills, :allow_destroy => true
-
-  # private
-  # def user_params
-  #   params.require(:user).permit(:)
-  # end
-
 end
