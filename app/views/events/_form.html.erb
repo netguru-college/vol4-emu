@@ -1,0 +1,29 @@
+<%= simple_form_for @event do |f| %>
+
+  <p>
+    <%= f.input :title %>
+  </p>
+
+  <p>
+    <%= f.input :capacity %>
+  </p>
+
+  <p>
+    <%= f.input :started_at %>
+  </p>
+
+  <p>
+    <%= f.input :ended_at %>
+  </p>
+
+  <p>
+    <%= f.input :description %>
+  </p>
+
+  <!--  <p><%#= f.submit %></p>-->
+  <p>
+    <%= f.button :submit, class: "Create" %>
+  </p>
+
+
+<% end %>
