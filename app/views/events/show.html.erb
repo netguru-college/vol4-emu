@@ -36,7 +36,7 @@
 <% @event.users.each do |user| %>
   <tr>
     <td><%= user.username %></td>
-    <td><%= user.username %></td>
+    <td><%= image_tag user.avatar_url :thumb, alt: 'Avatar' if user.avatar_url %></td>
   </tr>
 <% end %>
 <table>
