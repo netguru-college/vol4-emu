@@ -13,4 +13,6 @@ class User < ApplicationRecord
   has_many :sports, through: :skills
 
   accepts_nested_attributes_for :skills
+
+  
 end
