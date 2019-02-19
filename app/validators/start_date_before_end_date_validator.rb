@@ -5,9 +5,8 @@ class StartDateBeforeEndDateValidator < ActiveModel::EachValidator
     the_start = record.started_at
 
 
-
-    unless the_end >= the_start
-      record.errors.add attribute, (options[:message] || " can't be before the start date. Pick a date after #{the_start.strftime("%d/%m/%y")}!")
+    unless the_end > the_start
+      record.errors.add attribute, (options[:message] || " cannot be before #{the_end.strftime("%d/%m/%y/%H:%M")}!")
     end
   end
 

@@ -1,4 +1,3 @@
-<%= render 'navbar' %>
 <div class="container-body">
   <div class="row">
     <div class="col-12">
@@ -6,7 +5,7 @@
       <table class="event-container">
         <tr>
           <td class="time"><%=event.started_at.to_date() %></td>
-          <td class="event-title"><%= event.title %></td>
+          <td class="event-title"><%=link_to event.title, event_path(event) %></td>
           <td>Capacity: <%= event.capacity %></td>
           <td class="ball"><%=image_tag('football.png')%></td>
         </tr>

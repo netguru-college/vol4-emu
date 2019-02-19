@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_action :set_event, only: [:edit, :update, :show, :destroy]
+  before_action :set_event, only: [:edit, :update, :show, :destroy, :join, :leave]
 
   def index
     @events = Event.all
@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.build_sport
   end
 
   def edit
@@ -41,6 +42,20 @@ class EventsController < ApplicationController
     flash[:danger] = "Event was destroyed"
   end
 
+  def join
+    @event.users << current_user
+    redirect_back(fallback_location: root_path)
+  end
+
+  def leave
+    @event.users.delete(current_user)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def list_participants
+    @users = Event.find(params[:id]).users
+  end
+
   private
 
   def set_event
@@ -49,7 +64,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-        .permit(:title, :description, :capacity, :started_at, :ended_at, :description)
+        .permit(:title, :description, :capacity, :started_at, :ended_at, :description,
+          :sport_id
+          )
   end
 
 end

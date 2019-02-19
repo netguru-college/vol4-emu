@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_143448) do
+ActiveRecord::Schema.define(version: 2019_02_19_133645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2019_02_18_143448) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sport_id"
+    t.index ["sport_id"], name: "index_events_on_sport_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -43,6 +45,15 @@ ActiveRecord::Schema.define(version: 2019_02_18_143448) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_participations_on_event_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "contact"
+    t.date "day"
+    t.time "hour"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -79,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_143448) do
 
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
+  add_foreign_key "events", "sports"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
   add_foreign_key "skills", "sports"
