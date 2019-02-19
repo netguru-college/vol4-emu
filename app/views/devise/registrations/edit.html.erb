@@ -45,12 +45,13 @@
 
     <div id="user-skills-form">
       <%= f.fields_for(:skills) do |skill| %>
-      
-        <%= skill.label :level %>
-        <%= skill.text_field :level %>
+        <div class="field">
+          <%= skill.input :level, collection: Skill.levels.keys %>
+        </div>
 
-        <%= skill.label :sport_id %>
-        <%= skill.text_field :sport_id %>
+        <div class="field">
+          <%= skill.input :sport_id %>
+        </div>
 
         <div class="remove-skill">
           <%= skill.link_to_remove do %>

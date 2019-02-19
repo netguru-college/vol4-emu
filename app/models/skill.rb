@@ -4,7 +4,7 @@ class Skill < ApplicationRecord
 
   enum level:
   [
-    :never_tried_this_before,
+    :zero_experience,
     :beginner,
     :intermediate,
     :advanced,
