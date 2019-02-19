@@ -22,6 +22,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'nested_form'
 gem 'pry-rails'
 gem 'cloudinary'
+gem 'filterrific'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

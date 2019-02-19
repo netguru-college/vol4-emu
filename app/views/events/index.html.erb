@@ -1,3 +1,7 @@
+<% Sport.all.each do |sport| %>
+  <%= link_to sport.name, events_path(sport: sport.name) %>
+<% end %>
+
 <div class="container-body">
   <div class="row">
     <div class="col-12">

@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :show, :destroy, :join, :leave]
 
   def index
-    @events = Event.all
+    @events = Event.all.order("created_at DESC") unless params[:sport]
+    @events ||= Event.where(sport_id: Sport.find_by(name: params[:sport]).id)
   end
 
   def show
@@ -19,6 +20,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
     if @event.save
       flash[:success] = "Event was created"
       redirect_to @event
@@ -29,7 +31,8 @@ class EventsController < ApplicationController
 
   def update
     if @event.update_attributes(event_params)
-      redirect_to @event, :notice => "Event was updated."
+      redirect_to @event
+      flash[:notice] => "Event was updated."
     else
       render 'edit'
     end
@@ -63,10 +66,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event)
-        .permit(:title, :description, :capacity, :started_at, :ended_at, :description,
-          :sport_id
-          )
+    params.require(:event).permit(:title, :description, :capacity, :started_at, :ended_at, :description, :sport_id)
   end
 
 end
