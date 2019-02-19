@@ -1,5 +1,7 @@
 FactoryBot.define do
+
   factory :event do
+    sport
     title {'SomeEvent'}
     capacity {22}
     started_at {Faker::Date.forward(22)}
