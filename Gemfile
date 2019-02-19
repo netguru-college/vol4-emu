@@ -20,12 +20,18 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+gem 'pry-rails'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot'
   gem 'factory_bot_rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
 
 end
 

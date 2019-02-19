@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
   let(:event) {FactoryBot.create(:event)}
   subject {event}
 
@@ -19,8 +18,17 @@ RSpec.describe Event, type: :model do
     it {should have_many(:users).through(:participations)}
   end
 
-end
 
+  describe 'validations' do
+    it {expect(subject).to validate_presence_of(:title)}
+    it {expect(subject).to validate_presence_of(:description)}
+    it {expect(subject).to validate_length_of(:description).is_at_least(10)}
+    it {expect(subject).to validate_length_of(:description).is_at_most(500)}
+
+  end
+
+
+end
 
 
 

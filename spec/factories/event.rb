@@ -1,9 +1,11 @@
+
+
 FactoryBot.define do
   factory :event do
-    title {'SomeEven'}
+    title {'SomeEvent'}
     capacity {22}
-    started_at {2019-01-22}
-    ended_at {2019-01-22}
+    started_at {Faker::Date.forward(22)}
+    ended_at {Faker::Date.forward(23)+22.days}
     description {'sample description'}
   end
 end
