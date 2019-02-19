@@ -40,3 +40,19 @@
   </tr>
 <% end %>
 <table>
+
+  <% @event.comments.each do |comment| %>
+    <tr>
+      <td><%= comment.body %></td>
+    </tr>
+  <% end %>
+
+
+  <%= simple_form_for @event.comments.build, :url => event_comments_path(@event) do |comment| %>
+    <p>
+      <%= comment.input :body %>
+    </p>
+    <p>
+      <%= comment.button :submit, class: "Create" %>
+    </p>
+  <% end %>
