@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.build_sport
   end
 
   def edit
@@ -63,7 +64,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-        .permit(:title, :description, :capacity, :started_at, :ended_at, :description)
+        .permit(:title, :description, :capacity, :started_at, :ended_at, :description,
+          :sport_id
+          )
   end
 
 end
