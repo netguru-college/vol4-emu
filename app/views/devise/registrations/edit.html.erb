@@ -14,7 +14,6 @@
   <div class="field">
   <%= f.input :password,hint: "leave it blank if you don't want to change it",required: false,  input_html: { autocomplete: "new-password" } %>
     <% if @minimum_password_length %>
-      <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
@@ -27,6 +26,8 @@
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: false, input_html: { autocomplete: "current-password" } %>
   </div>
 
+  <br>
+  <h3> My Profile </h3>
   <div class="field">
     <%= f.input :avatar, as: :file %>
   </div>
@@ -41,7 +42,7 @@
 
   <div id="user-skills">
     <hr>
-    <%= f.label :'My Skills' %>
+    <b> Skills </b>
 
     <div id="user-skills-form">
       <%= f.fields_for(:skills) do |skill| %>
@@ -50,7 +51,9 @@
         </div>
 
         <div class="field">
-          <%= skill.input :sport_id %>
+          <%= skill.input :sport, collection: Sport.all,
+          label_method: :name, value_method: :id,
+          selected: skill.object.sport_id %>
         </div>
 
         <div class="remove-skill">
