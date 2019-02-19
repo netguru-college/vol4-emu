@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_action :set_event, only: [:edit, :update, :show, :destroy]
+  before_action :set_event, only: [:edit, :update, :show, :destroy, :join, :leave]
 
   def index
     @events = Event.all
@@ -39,6 +39,20 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to events_path
     flash[:danger] = "Event was destroyed"
+  end
+
+  def join
+    @event.users << current_user
+    redirect_back(fallback_location: root_path)
+  end
+
+  def leave
+    @event.users.delete(current_user)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def list_participants
+    @users = Event.find(params[:id]).users
   end
 
   private

@@ -9,6 +9,7 @@
           <td class="event-title"><%= event.title %></td>
           <td>Capacity: <%= event.capacity %></td>
           <td class="ball"><%=image_tag('football.png')%></td>
+          <td><%= link_to 'Show', event_path(event) %></td>
         </tr>
       </table>
       <% end %>
