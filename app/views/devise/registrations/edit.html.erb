@@ -47,11 +47,12 @@
     <div id="user-skills-form">
       <%= f.fields_for(:skills) do |skill| %>
         <div class="field">
-          <%= skill.input :level, collection: Skill.levels.keys %>
+          <%= skill.input :level, collection: Skill.levels.keys,
+          selected: skill.object.level %>
         </div>
 
         <div class="field">
-          <%= skill.input :sport, collection: Sport.all,
+          <%= skill.input :sport_id, collection: Sport.all,
           label_method: :name, value_method: :id,
           selected: skill.object.sport_id %>
         </div>
