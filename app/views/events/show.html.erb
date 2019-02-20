@@ -65,7 +65,7 @@
       <% end %>
 
       <p>
-        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
       </p>
       <p>
         <% if @event.place.owner %>
