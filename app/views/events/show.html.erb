@@ -25,16 +25,32 @@
         </table>
       </div>
     <div class="section attendees">
+      <div class="attendee-entry">
       <table>
-        <th> ATTENDEES</th>
-          <% @event.users.each do |user| %>
+          <th>OWNER</th>
             <tr>
-              <td>  <%= link_to user_path(user) do %>
-              <%= image_tag user.avatar_url, alt: user.username if user.avatar_url %>
-              <% end %></td>
+              <td>  
+                <%= link_to user_path(@event.owner) do %>
+                  <%= image_tag @event.owner.avatar_url :thumb, alt: @event.owner.username %>
+                  <%= @event.owner.username %>
+                <% end %>
+              </td>
             </tr>
-          <% end %>
-      </table>
+        </table>
+        <table>
+          <th> ATTENDEES</th>
+            <% @event.participants.each do |p| %>
+                <tr>
+                  <td>  
+                    <%= link_to user_path(p) do %>
+                      <%= image_tag p.avatar_url :thumb, alt: p.username %>
+                      <%= p.username %>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+        </table>
+      </div>
     </div>
     <div class="section comments">
       <%= render partial: 'comments/show'%>
@@ -56,8 +72,29 @@
         <strong>Start:</strong>
         <%= @event.started_at.strftime('%a, %d %b %Y %H:%M:%S') %>
       </p>
+      <p>
         <strong>End:</strong>
         <%= @event.ended_at.strftime('%a, %d %b %Y %H:%M:%S') %>
+      </p>
+     
+     <p><hr>
+        <strong>Where? </strong><%= @event.place.name %>
+      </p>
+      <p>
+        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+      </p>
+
+      <p>
+        <% if !@event.place.owner.blank? %>
+          <strong>Place owner:</strong>
+          <%= @event.place.owner %>
+        <% end %>
+        <br>
+        <% if !@event.place.phone_number.blank? %>
+          <strong>Contact owner:</strong>
+          <%= @event.place.phone_number %>
+        <% end %>
+      </p>
     </div>
     <div>
       <% if @event.users.find_by(id: current_user) %>
@@ -66,19 +103,6 @@
     <p>    <%= link_to 'Join', join_event_path(@event), class: "btn btn-primary join-leave" %></p>
       <% end %>
 
-      <p>
-        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
-      </p>
-      <p>
-        <% if @event.place.owner %>
-          <strong>Place owner:</strong>
-          <%= @event.place.owner %>
-        <% end %><br>
-         <% if @event.place.phone_number %>
-          <strong>Contact owner:</strong>
-          <%= @event.place.phone_number %>
-        <% end %>
-      </p>
 
     </div>
   </div>

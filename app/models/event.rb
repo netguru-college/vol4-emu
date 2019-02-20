@@ -16,6 +16,14 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :sport
   accepts_nested_attributes_for :place
 
+  def owner
+    self.participations.where(role: "owner")[0].user
+  end
+
+  def participants
+    self.participations.where.not(role: "owner").map(&:user)
+  end
+
   filterrific(
       default_filter_params: {},
       available_filters: [
