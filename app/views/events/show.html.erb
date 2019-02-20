@@ -22,6 +22,9 @@
         <table>
         <th>DESCRIPTION</th>
         <tr><td><p><%= @event.description %></p></td></tr>
+        <tr><td>
+          <p><strong>Sport: </strong><%= @event.sport.name %></p>
+        </td></tr>
         </table>
       </div>
     <div class="section attendees">
@@ -32,7 +35,10 @@
               <td>  
                 <%= link_to user_path(@event.owner) do %>
                   <%= image_tag @event.owner.avatar_url :thumb, alt: @event.owner.username %>
-                  <%= @event.owner.username %>
+                  <b><%= @event.owner.username %></b>
+                  <% if @event.owner.skill_level(@event.sport.name) %>
+                     (<%= @event.owner.skill_level(@event.sport.name) %>)
+                  <% end %>
                 <% end %>
               </td>
             </tr>
@@ -44,7 +50,10 @@
                   <td>  
                     <%= link_to user_path(p) do %>
                       <%= image_tag p.avatar_url :thumb, alt: p.username %>
-                      <%= p.username %>
+                      <b><%= p.username %></b>
+                       <% if p.skill_level(@event.sport.name) %>
+                          (<%= p.skill_level(@event.sport.name) %>)
+                        <% end %>
                     <% end %>
                   </td>
                 </tr>

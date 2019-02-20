@@ -18,4 +18,8 @@ class User < ApplicationRecord
     event = events.create(attributes)
     event.tap { |event| event.participations.find_by(user: self)&.owner! }
   end
+
+  def skill_level(sport_name)
+    self.skills.joins(:sport).find_by("sports.name = ?", sport_name)&.level
+  end
 end
