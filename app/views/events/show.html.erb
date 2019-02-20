@@ -54,7 +54,7 @@
                 <tr>
                   <td>
                     <%= link_to user_path(p) do %>
-                      <%= image_tag p.avatar_url :thumb, alt: p.username %>
+                    <!--  <%#= image_tag p.avatar_url :thumb, alt: p.username %>-->
                       <b><%= p.username %></b>
                        <% if p.skill_level(@event.sport.name) %>
                           (<%= p.skill_level(@event.sport.name) %>)
