@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   get 'events/:id/RSVP', to: 'events#join', as: 'join_event'
   delete 'events/:id/RSVP', to: 'events#leave', as: 'leave_event'
+
+  get 'users', to: 'users#index'
+  get 'user/:id', to: 'users#show', as: 'user'
 end
