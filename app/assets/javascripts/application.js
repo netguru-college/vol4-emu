@@ -18,3 +18,4 @@
 //= require popper
 //= require bootstrap
 //= require jquery_nested_form
+//= require filterrific/filterrific-jquery
