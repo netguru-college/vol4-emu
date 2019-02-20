@@ -27,6 +27,7 @@ RSpec.describe Event, type: :model do
     it {expect(subject).to validate_length_of(:description).is_at_most(500)}
     it {expect((subject.started_at) < (subject.ended_at))}
     it {expect(!(subject.started_at).past?)}
+    it {expect((subject.capacity)>1)}
 
   end
 
