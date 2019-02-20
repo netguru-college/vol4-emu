@@ -27,19 +27,44 @@
         <table>
         <th>DESCRIPTION</th>
         <tr><td><p><%= @event.description %></p></td></tr>
+        <tr><td>
+          <p><strong>Sport: </strong><%= @event.sport.name %></p>
+        </td></tr>
         </table>
       </div>
     <div class="section attendees">
+      <div class="attendee-entry">
       <table>
-        <th> ATTENDEES</th>
-          <% @event.users.each do |user| %>
+          <th>OWNER</th>
             <tr>
-              <td>  <%= link_to user_path(user) do %>
-              <%= image_tag user.avatar_url, alt: user.username if user.avatar_url %>
-              <% end %></td>
+              <td>
+                <%= link_to user_path(@event.owner) do %>
+                  <%= image_tag @event.owner.avatar_url :thumb, alt: @event.owner.username %>
+                  <b><%= @event.owner.username %></b>
+                  <% if @event.owner.skill_level(@event.sport.name) %>
+                     (<%= @event.owner.skill_level(@event.sport.name) %>)
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
-          <% end %>
-      </table>
+        </table>
+        <table>
+          <th> ATTENDEES</th>
+            <% @event.participants.each do |p| %>
+                <tr>
+                  <td>
+                    <%= link_to user_path(p) do %>
+                      <%= image_tag p.avatar_url :thumb, alt: p.username %>
+                      <b><%= p.username %></b>
+                       <% if p.skill_level(@event.sport.name) %>
+                          (<%= p.skill_level(@event.sport.name) %>)
+                        <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+        </table>
+      </div>
     </div>
     <div class="section comments">
       <%= render partial: 'comments/show'%>
@@ -61,6 +86,7 @@
         <strong>Start:</strong>
         <%= @event.started_at.strftime('%a, %d %b %Y %H:%M:%S') %>
       </p>
+      <p>
         <strong>End:</strong>
         <%= @event.ended_at.strftime('%a, %d %b %Y %H:%M:%S') %>
     </div>
@@ -70,20 +96,35 @@
       <% else %>
     <p>    <%= link_to 'Join', join_event_path(@event), class: "btn btn-primary join-leave" if policy(@event).join? %></p>
       <% end %>
+    </p>
+
+   <p><hr>
+      <strong>Where? </strong><%= @event.place.name %>
+    </p>
 
       <p>
         <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
       </p>
+
       <p>
-        <% if @event.place.owner %>
+        <% if !@event.place.owner.blank? %>
           <strong>Place owner:</strong>
           <%= @event.place.owner %>
-        <% end %><br>
-         <% if @event.place.phone_number %>
+        <% end %>
+        <br>
+        <% if !@event.place.phone_number.blank? %>
           <strong>Contact owner:</strong>
           <%= @event.place.phone_number %>
         <% end %>
       </p>
+    </div>
+    <div>
+      <% if @event.users.find_by(id: current_user) %>
+    <p>    <%= link_to 'Leave', leave_event_path(@event),class: "btn btn-danger join-leave", method: :delete %></p>
+      <% else %>
+    <p>    <%= link_to 'Join', join_event_path(@event), class: "btn btn-primary join-leave" %></p>
+      <% end %>
+
 
     </div>
   </div>
