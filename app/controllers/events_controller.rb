@@ -31,15 +31,20 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+
     @event.build_sport
+    @event.build_place
   end
 
   def edit
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.user = current_user
+    @event = current_user.create_event_as_owner(event_params)
+    @event.create_place(event_params[:place_attributes])
+    # @event[:place_id] = place[:id]
+    # @event.user = current_user
+
     if @event.save
       flash[:success] = "Event was created"
       redirect_to @event
@@ -66,6 +71,7 @@ class EventsController < ApplicationController
 
   def join
     @event.users << current_user
+    @event.participations.find_by(user: current_user).participant!
     redirect_back(fallback_location: root_path)
   end
 
@@ -85,7 +91,9 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :capacity, :started_at, :ended_at, :description, :sport_id)
+    params.require(:event)
+        .permit(:title, :capacity, :started_at, :ended_at, :description, :sport_id,
+          place_attributes: [:name, :owner, :phone_number])
   end
 
 end
