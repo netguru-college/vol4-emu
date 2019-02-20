@@ -89,6 +89,27 @@
       <p>
         <strong>End:</strong>
         <%= @event.ended_at.strftime('%a, %d %b %Y %H:%M:%S') %>
+        <p><hr>
+            <strong>Where? </strong><%= @event.place.name %>
+          </p>
+
+            <p>
+              <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+            </p>
+
+            <p>
+              <% if !@event.place.owner.blank? %>
+                <strong>Place owner:</strong>
+                <%= @event.place.owner %>
+              <% end %>
+              <br>
+              <% if !@event.place.phone_number.blank? %>
+                <strong>Contact owner:</strong>
+                <%= @event.place.phone_number %>
+              <% end %>
+            </p>
+          </div>
+          <div>
     </div>
     <div>
       <% if @event.users.find_by(id: current_user) %>
@@ -97,34 +118,6 @@
     <p>    <%= link_to 'Join', join_event_path(@event), class: "btn btn-primary join-leave" if policy(@event).join? %></p>
       <% end %>
     </p>
-
-   <p><hr>
-      <strong>Where? </strong><%= @event.place.name %>
-    </p>
-
-      <p>
-        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
-      </p>
-
-      <p>
-        <% if !@event.place.owner.blank? %>
-          <strong>Place owner:</strong>
-          <%= @event.place.owner %>
-        <% end %>
-        <br>
-        <% if !@event.place.phone_number.blank? %>
-          <strong>Contact owner:</strong>
-          <%= @event.place.phone_number %>
-        <% end %>
-      </p>
-    </div>
-    <div>
-      <% if @event.users.find_by(id: current_user) %>
-    <p>    <%= link_to 'Leave', leave_event_path(@event),class: "btn btn-danger join-leave", method: :delete %></p>
-      <% else %>
-    <p>    <%= link_to 'Join', join_event_path(@event), class: "btn btn-primary join-leave" %></p>
-      <% end %>
-
 
     </div>
   </div>
