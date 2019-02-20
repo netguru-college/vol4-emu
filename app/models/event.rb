@@ -33,7 +33,9 @@ class Event < ApplicationRecord
   )
 
   scope :search_query, ->(query) {
-    where("title LIKE ?", "%#{query}%")
+    terms = query.downcase.split(/\s+/)
+
+    where("title LIKE ?", "%#{terms}%")
   }
   scope :with_sport_id, ->(sport_ids) {
     where(sport_id: [*sport_ids])
