@@ -16,6 +16,6 @@ class User < ApplicationRecord
 
   def create_event_as_owner(attributes)
     event = events.create(attributes)
-    event.tap { |event| event.participations.find_by(user: self).owner! }
+    event.tap { |event| event.participations.find_by(user: self)&.owner! }
   end
 end

@@ -42,9 +42,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.create_event_as_owner(event_params)
     @event.create_place(event_params[:place_attributes])
-    # @event[:place_id] = place[:id]
-    # @event.user = current_user
-
+    
     if @event.save
       flash[:success] = "Event was created"
       redirect_to @event
