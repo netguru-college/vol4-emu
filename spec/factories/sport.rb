@@ -4,5 +4,3 @@ FactoryBot.define do
     icon {'some_url'}
   end
 end
-
-

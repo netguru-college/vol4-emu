@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :event do
     sport
     title {'SomeEvent'}
@@ -9,6 +8,3 @@ FactoryBot.define do
     description {'sample description'}
   end
 end
-
-
-
