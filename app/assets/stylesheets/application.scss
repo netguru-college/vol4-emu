@@ -168,9 +168,79 @@ a:hover {
   color: #43e05a;
 }
 
-
-
 .ball img{
   width: 50px;
   height: 50px;
+}
+
+.form{
+  width:40%;
+  text-align: left;
+  margin: auto;
+  font-weight: bold;
+}
+
+.submit{
+  margin: auto;
+  background-color: gray;
+  color: white;
+  display: block;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.section {
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.12);
+  margin: auto;
+  line-height: 2.5;
+  margin-top: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.section table{
+  width: 100%;
+}
+.section tr{
+  border: 1px solid rgba(0,0,0,.12);
+  width: 100%;
+  padding: 20px;
+}
+.sport-icon {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+.description{
+}
+.details{
+  text-align: center;
+}
+ul{
+  text-align: center;
+}
+.row-event{
+  display: flex;
+}
+.join-leave{
+  width: 100%;
+}
+.attendees td img{
+  width: 100px;
+}
+.add-comment{
+  margin-top: 30px;
+}
+.edit-delete img{
+  width: 50px;
+}
+.buttons{
+  text-align: right;
+  opacity: 0.3;
+}
+.commenter{
+  font-weight: bold;
 }
