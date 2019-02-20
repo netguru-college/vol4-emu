@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :sport do
-    name {'Footbll'}
-    icon {'some_url'}
+    name {Faker::Football.competition}
+    icon {Faker::Avatar.image}
   end
 end

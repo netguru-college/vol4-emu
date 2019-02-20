@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_122035) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.decimal "latitude"
     t.decimal "longitude"
     t.string "owner"
