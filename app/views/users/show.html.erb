@@ -1,16 +1,25 @@
+<h1>View Profile</h1>
+<div class="cotainer">
+  <div class="col-md-12">
+    <div class="profile">
 <%=image_tag @user.avatar_url,  class: "profile-avatar" if @user.avatar_url%>
-<h1><%=@user.username %></h1>
 
-<h1><%=@user.city %></h1>
+<p class="commenter"><%=@user.username %></p>
 
-<h1><%=@user.description %></h1>
+<p><%=@user.city %></p>
 
+<p><%=@user.description %></p>
+<table class="skills">
 <% @user.skills.each do |skill| %>
-<table class="event-container">
+
     <tr>
-      <td class="ball"><%=image_tag skill.sport.icon if skill.sport.icon%></td>
+      <td class="edit-delete"><%=image_tag skill.sport.icon if skill.sport.icon%></td>
       <td><%=skill.sport.name %></td>
       <td><%=skill.level %></td>
       </tr>
-  </table>
+
 <% end %>
+</table>
+</div>
+</div>
+</div>

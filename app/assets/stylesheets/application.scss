@@ -147,9 +147,6 @@ tr {
   font-size: 18px;
   overflow: auto;
 }
-.ball{
-  text-align: right;
-}
 
 a {
   color: rgba(0,0,0,.54);
@@ -242,7 +239,7 @@ h1, h2 {
   font-weight: bold;
 }
 .profile-avatar{
-  width: 100px;
+  width: 150px;
 }
 .row-item{
   display: inline-block;
@@ -260,4 +257,22 @@ h1, h2 {
   font-size: 22px;
   color: black;
   font-weight: 500;
+}
+.profile{
+  display: block;
+  margin: auto;
+  width: 60%;
+  text-align:center;
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.12);
+  padding: 30px;
+}
+
+.profile p, td, tr{
+  padding: 10px;
+  text-align: center;
+}
+.skills{
+  display: -webkit-inline-box;
+  margin-top: 30px;
 }
