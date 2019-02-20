@@ -11,7 +11,7 @@ class Event < ApplicationRecord
   has_many :users, through: :participations
   has_many :comments, dependent: :destroy
   belongs_to :sport
-  belongs_to :place, optional: true
+  belongs_to :place
 
   accepts_nested_attributes_for :sport
   accepts_nested_attributes_for :place
