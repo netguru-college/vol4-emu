@@ -1,5 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<div class="form">
 <%= simple_nested_form_for(@user, :url => registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -75,10 +75,11 @@
   </div>
 
   <div class="actions">
-    <%= f.button :submit, "Confim changes" %>
+    <%= f.button :submit, "Confim changes", class:"submit" %>
   </div>
 <% end %>
 
 <%# <h3>Cancel my account</h3> %>
 
 <%= link_to "Back", :back %>
+</div>
