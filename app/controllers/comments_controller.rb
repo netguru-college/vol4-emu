@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
 
+  rescue_from Pundit::NotAuthorizedError do
+    flash[:warning] = "You don't have access to this page"
+    redirect_to events_path
+  end
+
   def index
     @comment = Comment.all
   end
