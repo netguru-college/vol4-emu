@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_161556) do
+ActiveRecord::Schema.define(version: 2019_02_20_084139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_161556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sport_id"
+    t.bigint "place_id"
+    t.index ["place_id"], name: "index_events_on_place_id"
     t.index ["sport_id"], name: "index_events_on_sport_id"
   end
 
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_161556) do
 
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
+  add_foreign_key "events", "places"
   add_foreign_key "events", "sports"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"

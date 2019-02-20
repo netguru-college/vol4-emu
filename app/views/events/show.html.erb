@@ -63,6 +63,21 @@
       <% else %>
     <p>    <%= link_to 'Join', join_event_path(@event), class: "btn btn-primary join-leave" %></p>
       <% end %>
+
+      <p>
+        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+      </p>
+      <p>
+        <% if @event.place.owner %>
+          <strong>Place owner:</strong>
+          <%= @event.place.owner %>
+        <% end %><br>
+         <% if @event.place.phone_number %>
+          <strong>Contact owner:</strong>
+          <%= @event.place.phone_number %>
+        <% end %>
+      </p>
+
     </div>
   </div>
 </div>

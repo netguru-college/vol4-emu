@@ -11,14 +11,20 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+
     @event.build_sport
+    @event.build_place
   end
 
   def edit
   end
 
   def create
+    place_data = event_params[:place_attributes]
+    place = Place.create(place_data)
+    
     @event = Event.new(event_params)
+    @event[:place_id] = place[:id]
     if @event.save
       flash[:success] = "Event was created"
       redirect_to @event
@@ -64,9 +70,8 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-        .permit(:title, :description, :capacity, :started_at, :ended_at, :description,
-          :sport_id
-          )
+        .permit(:title, :capacity, :started_at, :ended_at, :description, :sport_id,
+          place_attributes: [:name, :owner, :phone_number])
   end
 
 end
