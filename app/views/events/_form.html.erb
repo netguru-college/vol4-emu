@@ -25,6 +25,13 @@
     <%= f.input :description %>
   </p>
 
+  <h2>Event's Place</h2>
+  <%= f.simple_fields_for :place do |p| %>
+    <%= p.input :name, as: :string, label: 'Where does this event take place?' %> 
+    <%= p.input :owner, as: :string, label: 'Who owns it?' %> 
+    <%= p.input :phone_number, as: :string, label: 'Contact number to the owner' %> 
+  <% end %> 
+
   <!--  <p><%#= f.submit %></p>-->
   <p>
     <%= f.button :submit, class: "submit" %>
