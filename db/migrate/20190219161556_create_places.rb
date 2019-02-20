@@ -8,9 +8,6 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.string :phone_number
 
       t.timestamps
-
-      add_index :latitude, :longitude, unique: true
-      add_index :name     
     end
   end
 end
