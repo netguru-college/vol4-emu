@@ -3,14 +3,15 @@
     <div class="row">
       <div class="col-12">
         <% @events.each do |event| %>
-        <table class="event-container">
-          <tr>
-            <td class="time"><%=event.started_at.to_date() %></td>
-            <td class="event-title"><%=link_to event.title, event_path(event) %></td>
-            <td>Capacity: <%= event.capacity %></td>
-            <td class="ball"><%=image_tag event.sport.icon if event.sport.icon %>  </td>
-          </tr>
-        </table>
+        <ul class="event-container">
+          <li>
+            <div class="row-item time"><%=event.started_at.to_date() %></div>
+            <div class="row-item event-item"><%=link_to event.title, event_path(event) %>
+            <p><%=event.place.name %></p></div>
+            <div class="row-item ball"><%=image_tag event.sport.icon if event.sport.icon %>
+            <p><%= event.users.count %> / <%= event.capacity %> </div></p>
+          </li>
+        </ul>
         <% end %>
       </div>
 </div>
