@@ -17,7 +17,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :place
 
   def owner
-    self.participations.where(role: "owner")[0].user
+    self.participations.find_by(role: "owner")&.user
   end
 
   def participants
