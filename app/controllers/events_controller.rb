@@ -3,9 +3,28 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :show, :destroy, :join, :leave]
 
   def index
-    @events = Event.all.order("created_at DESC") unless params[:sport]
-    @events ||= Event.where(sport_id: Sport.find_by(name: params[:sport]).id)
-  end
+      @filterrific = initialize_filterrific(
+        Event,
+        params[:filterrific],
+        select_options: {
+          with_sport_id: Sport.options_for_select,
+        },
+        persistence_id: "shared_key",
+        default_filter_params: {},
+        available_filters: [:search_query, :with_sport_id],
+        sanitize_params: true,
+      ) || return
+      @events = @filterrific.find
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
+
+    rescue ActiveRecord::RecordNotFound => e
+      puts "Had to reset filterrific params: #{e.message}"
+      redirect_to(reset_filterrific_url(format: :html)) && return
+    end
 
   def show
   end
@@ -32,7 +51,7 @@ class EventsController < ApplicationController
   def update
     if @event.update_attributes(event_params)
       redirect_to @event
-      flash[:notice] => "Event was updated."
+      flash[:notice] = "Event was updated"
     else
       render 'edit'
     end
