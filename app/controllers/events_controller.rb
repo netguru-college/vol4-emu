@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
-
   before_action :set_event, only: [:edit, :update, :show, :destroy, :join, :leave]
+
+  rescue_from Pundit::NotAuthorizedError do
+    flash[:warning] = "You don't have access to this page"
+    redirect_to events_path
+  end
 
   def index
       @filterrific = initialize_filterrific(
@@ -24,6 +28,7 @@ class EventsController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       puts "Had to reset filterrific params: #{e.message}"
       redirect_to(reset_filterrific_url(format: :html)) && return
+      authorize @events
     end
 
   def show
@@ -31,7 +36,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-
+    authorize @event
     @event.build_sport
     @event.build_place
   end
@@ -42,7 +47,8 @@ class EventsController < ApplicationController
   def create
     @event = current_user.create_event_as_owner(event_params)
     @event.create_place(event_params[:place_attributes])
-    
+    authorize @event
+
     if @event.save
       flash[:success] = "Event was created"
       redirect_to @event
@@ -86,6 +92,7 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+    authorize @event
   end
 
   def event_params
