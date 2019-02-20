@@ -8,11 +8,9 @@
             <td class="time"><%=event.started_at.to_date() %></td>
             <td class="event-title"><%=link_to event.title, event_path(event) %></td>
             <td>Capacity: <%= event.capacity %></td>
-            <td class="ball"><%=image_tag('football.png')%></td>
+            <td class="ball"><%=image_tag event.sport.icon if event.sport.icon %>  </td>
           </tr>
         </table>
         <% end %>
       </div>
-    </div>
-  </div>
 </div>
