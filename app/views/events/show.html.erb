@@ -39,7 +39,7 @@
             <tr>
               <td>
                 <%= link_to user_path(@event.owner) do %>
-                  <%= image_tag @event.owner.avatar_url :thumb, alt: @event.owner.username %>
+                  <%#= image_tag @event.owner.avatar_url :thumb, alt: @event.owner.username %>
                   <b><%= @event.owner.username %></b>
                   <% if @event.owner.skill_level(@event.sport.name) %>
                      (<%= @event.owner.skill_level(@event.sport.name) %>)
