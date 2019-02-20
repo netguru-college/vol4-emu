@@ -4,7 +4,6 @@ RSpec.describe Event, type: :model do
   let(:event) {FactoryBot.create(:event)}
   subject {event}
 
-
   describe 'database columns' do
     it {is_expected.to have_db_column :title}
     it {is_expected.to have_db_column :capacity}
@@ -19,7 +18,6 @@ RSpec.describe Event, type: :model do
     it {should belong_to(:sport)}
   end
 
-
   describe 'validations' do
     it {expect(subject).to validate_presence_of(:title)}
     it {expect(subject).to validate_presence_of(:description)}
@@ -27,10 +25,9 @@ RSpec.describe Event, type: :model do
     it {expect(subject).to validate_length_of(:description).is_at_most(500)}
     it {expect((subject.started_at) < (subject.ended_at))}
     it {expect(!(subject.started_at).past?)}
-    it {expect((subject.capacity)>1)}
+    it {expect((subject.capacity) > 1)}
 
   end
-
 
 end
 

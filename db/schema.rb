@@ -47,15 +47,6 @@ ActiveRecord::Schema.define(version: 2019_02_19_133645) do
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
-  create_table "places", force: :cascade do |t|
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "contact"
-    t.date "day"
-    t.time "hour"
-  end
-
   create_table "skills", force: :cascade do |t|
     t.integer "level"
     t.bigint "user_id"
