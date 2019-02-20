@@ -43,7 +43,9 @@
   </div>
   <div class="col-md-4">
     <div class="section details" >
-        <%= image_tag @event.sport.icon, class: "sport-icon" %>
+        <% if @event.sport.icon %>
+          <%= image_tag @event.sport.icon, class: "sport-icon" %>
+        <% end %>
       <p>
         <strong>Capacity:</strong>
         <%= @event.users.count %> / <%= @event.capacity %>
