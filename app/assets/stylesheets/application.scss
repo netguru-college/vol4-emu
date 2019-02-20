@@ -222,9 +222,7 @@ h1, h2 {
 .join-leave{
   width: 100%;
 }
-.attendees td img{
-  width: 100px;
-}
+
 .add-comment{
   margin-top: 30px;
 }
@@ -275,4 +273,8 @@ h1, h2 {
 .skills{
   display: -webkit-inline-box;
   margin-top: 30px;
+}
+
+.attendee-entry tr{
+  padding: 8px;
 }

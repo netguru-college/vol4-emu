@@ -2,12 +2,14 @@ class Skill < ApplicationRecord
   belongs_to :user
   belongs_to :sport
 
+  validates_uniqueness_of :sport, scope: :user
+
   enum level:
   [
-    :zero_experience,
-    :beginner,
-    :intermediate,
-    :advanced,
-    :champion  
+    "No experience",
+    "Beginner",
+    "Intermediate",
+    "Advanced",
+    "World Champion"  
   ]
 end

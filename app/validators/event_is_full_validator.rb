@@ -6,6 +6,6 @@ class EventIsFullValidator < ActiveModel::EachValidator
 
   private
   def is_capacity_full(record)
-    (record.users.size) > (record.capacity)
+    (record.users.size) >= (record.capacity)
   end
 end
