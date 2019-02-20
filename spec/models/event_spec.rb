@@ -26,7 +26,6 @@ RSpec.describe Event, type: :model do
     it {expect((subject.started_at) < (subject.ended_at))}
     it {expect(!(subject.started_at).past?)}
     it {expect((subject.capacity) > 1)}
-
+    it {expect((subject.capacity) > (subject.users.size))}
   end
-
 end
