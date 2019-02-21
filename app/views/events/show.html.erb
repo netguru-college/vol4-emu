@@ -82,7 +82,6 @@
         <% if @event.sport.icon %>
           <%= image_tag @event.sport.icon, class: "sport-icon" %>
         <% end %>
-<<<<<<< HEAD
         <p>
           <strong>Capacity:</strong>
           <%= @event.users.count %> / <%= @event.capacity %>
@@ -98,7 +97,7 @@
         <hr>
         <strong>Where? </strong><%= @event.place.name %>
         </p>
-=======
+
       <p>
         <strong>Capacity:</strong>
         <%= @event.users.count %> / <%= @event.capacity %>
@@ -121,13 +120,10 @@
         <p>
             <strong>Where? </strong><%= @event.place.name %>
           </p>
->>>>>>> master
-
         <p>
           <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
         </p>
 
-<<<<<<< HEAD
         <p>
           <% if !@event.place.owner.blank? %>
             <strong>Place owner:</strong>
@@ -152,7 +148,6 @@
 
       </div>
     </div>
-=======
             <p>
               <% if !@event.place.owner.blank? %>
                 <strong>Place owner:</strong>
@@ -167,7 +162,5 @@
           </div>
           <div>
     </div>
-
->>>>>>> master
   </div>
 </div>
