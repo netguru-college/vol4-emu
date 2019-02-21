@@ -66,7 +66,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def destroy
     @event.destroy
     redirect_to events_path
@@ -74,6 +73,7 @@ class EventsController < ApplicationController
   end
 
   def join
+
     if @event.users.size < @event.capacity
       @event.users << current_user
       @event.participations.find_by(user: current_user).participant!
@@ -87,6 +87,7 @@ class EventsController < ApplicationController
 
   def leave
     @event.users.delete(current_user)
+    flash[:success] = "You have left event!"
     redirect_back(fallback_location: root_path)
   end
 
