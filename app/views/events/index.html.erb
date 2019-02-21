@@ -1,32 +1,31 @@
 <h1>Events</h1>
 
 <%= form_for_filterrific @filterrific do |f| %>
-  <div class="search">
-    Search
-    <%= f.text_field(
-      :search_query,
-      class: 'filterrific-periodically-observed'
-    ) %>
-  </div>
-  <div class="search">
-    Sport
-    <%= f.select(
-      :with_sport_id,
-      @filterrific.select_options[:with_sport_id],
-      { include_blank: 'Any ' }
-    ) %>
-  </div>
-  <div class="search">
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url, class: "btn btn-primary"
-    ) %>
-  </div>
-  <%= render_filterrific_spinner %>
-
+ <div class="search">
+   Search
+   <%= f.text_field(
+     :search_query,
+     class: 'filterrific-periodically-observed'
+   ) %>
+ </div>
+ <div class="search">
+   Sport
+   <%= f.select(
+     :with_sport_id,
+     @filterrific.select_options[:with_sport_id],
+     { include_blank: 'Any ' }
+   ) %>
+ </div>
+ <div class="search">
+   <%= link_to(
+     'Reset filters',
+     reset_filterrific_url, class: "btn btn-primary"
+   ) %>
+ </div>
+ <%= render_filterrific_spinner %>
 <% end %>
 
 <%= render(
-  partial: 'events/list',
-  locals: { events: @events }  
+ partial: 'events/list',
+ locals: { events: @events }
 ) %>

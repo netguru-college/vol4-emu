@@ -7,6 +7,7 @@ class EventCannotBeInPastValidator < ActiveModel::EachValidator
   private
 
   def in_past(record)
+
     the_start = record.started_at
     the_start.past?
   end
