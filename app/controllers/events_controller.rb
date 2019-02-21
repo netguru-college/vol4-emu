@@ -7,29 +7,29 @@ class EventsController < ApplicationController
   end
 
   def index
-      @filterrific = initialize_filterrific(
+    @filterrific = initialize_filterrific(
         Event,
         params[:filterrific],
         select_options: {
-          with_sport_id: Sport.options_for_select,
+            with_sport_id: Sport.options_for_select,
         },
         persistence_id: "shared_key",
         default_filter_params: {},
         available_filters: [:search_query, :with_sport_id],
         sanitize_params: true,
-      ) || return
-      @events = @filterrific.find
+    ) || return
+    @events = @filterrific.find
 
-      respond_to do |format|
-        format.html
-        format.js
-      end
-
-    rescue ActiveRecord::RecordNotFound => e
-      puts "Had to reset filterrific params: #{e.message}"
-      redirect_to(reset_filterrific_url(format: :html)) && return
-      authorize @events
+    respond_to do |format|
+      format.html
+      format.js
     end
+
+  rescue ActiveRecord::RecordNotFound => e
+    puts "Had to reset filterrific params: #{e.message}"
+    redirect_to(reset_filterrific_url(format: :html)) && return
+    authorize @events
+  end
 
   def show
   end
@@ -66,7 +66,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def destroy
     @event.destroy
     redirect_to events_path
@@ -74,10 +73,16 @@ class EventsController < ApplicationController
   end
 
   def join
-    @event.users << current_user
-    @event.participations.find_by(user: current_user).participant!
-    flash[:success] = "You have joined event!"
-    redirect_back(fallback_location: root_path)
+
+    if @event.users.size < @event.capacity
+      @event.users << current_user
+      @event.participations.find_by(user: current_user).participant!
+      flash[:success] = "You have joined the event!"
+      redirect_to event_path(@event)
+    else
+      render 'show'
+      flash[:danger] = "This event is full"
+    end
   end
 
   def leave
@@ -100,7 +105,7 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event)
         .permit(:title, :capacity, :started_at, :ended_at, :description, :sport_id,
-          place_attributes: [:name, :owner, :phone_number])
+                place_attributes: [:name, :owner, :phone_number])
   end
 
 end
