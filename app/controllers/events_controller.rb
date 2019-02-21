@@ -76,11 +76,13 @@ class EventsController < ApplicationController
   def join
     @event.users << current_user
     @event.participations.find_by(user: current_user).participant!
+    flash[:success] = "You have joined event!"
     redirect_back(fallback_location: root_path)
   end
 
   def leave
     @event.users.delete(current_user)
+    flash[:success] = "You have left event!"
     redirect_back(fallback_location: root_path)
   end
 
