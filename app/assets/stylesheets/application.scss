@@ -237,7 +237,9 @@ h1, h2 {
   font-weight: bold;
 }
 .profile-avatar{
-  width: 150px;
+  width: 200px;
+  display: block;
+  margin-bottom: 30px;
 }
 .row-item{
   display: inline-block;
@@ -268,13 +270,23 @@ h1, h2 {
 
 .profile p, td, tr{
   padding: 10px;
-  text-align: center;
+  text-align: left;
 }
 .skills{
   display: -webkit-inline-box;
   margin-top: 30px;
 }
 
+.skills th{
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
 .attendee-entry tr{
   padding: 8px;
+}
+.line{
+  display:inline-block;
+  overflow: auto;
 }
