@@ -73,14 +73,13 @@ class EventsController < ApplicationController
   end
 
   def join
-
     if @event.users.size < @event.capacity
       @event.users << current_user
       @event.participations.find_by(user: current_user).participant!
       flash[:success] = "You have joined the event!"
       redirect_to event_path(@event)
     else
-      render 'show'
+      redirect_to event_path(@event)
       flash[:danger] = "This event is full"
     end
   end
