@@ -17,13 +17,13 @@ class EventsController < ApplicationController
         default_filter_params: {},
         available_filters: [:search_query, :with_sport_id],
         sanitize_params: true,
-    ) || return
-    @events = @filterrific.find
+      ) || return
+      @events = @filterrific.find.page params[:page]
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+      respond_to do |format|
+        format.html
+        format.js
+      end
 
   rescue ActiveRecord::RecordNotFound => e
     puts "Had to reset filterrific params: #{e.message}"
@@ -74,14 +74,13 @@ class EventsController < ApplicationController
   end
 
   def join
-
     if @event.users.size < @event.capacity
       @event.users << current_user
       @event.participations.find_by(user: current_user).participant!
       flash[:success] = "You have joined the event!"
       redirect_to event_path(@event)
     else
-      render 'show'
+      redirect_to event_path(@event)
       flash[:danger] = "This event is full"
     end
   end

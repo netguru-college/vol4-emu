@@ -7,7 +7,8 @@
       <%= image_tag comment.user.avatar_url :thumb, alt: 'Avatar' if comment.user.avatar_url %>
     <% end %>
     </td>
-    <td class="commenter"><%= comment.user.username %>: </td>
+    <td class="commenter"><%=comment.user.username %> </td>
+    <td class="comment-date">(<%=comment.created_at.strftime("%m/%d/%y %H:%M")%>)</td>
     <td><%= comment.body %></td>
   </tr>
 <% end %>
