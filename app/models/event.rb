@@ -25,6 +25,24 @@ class Event < ApplicationRecord
     self.participations.where.not(role: "owner").map(&:user)
   end
 
+  def create_place_with_coords(attributes)
+    self.create_place(attributes)
+    data = Geocoder.search(self.place.name).first&.coordinates
+    if data
+      self.place.latitude = (data[0] if data) || 0
+      self.place.longitude = (data[1] if data) || 0
+    end
+  end
+
+  def place_map_href    
+    base_str = "https://maps.googleapis.com/maps/api/staticmap?"
+    params ="center=#{CGI::escape(self.place.name)}&zoom=14&size=200x200&key=#{Rails.application.credentials.google_maps_api_key}"
+    if self.place.latitude && self.place.longitude
+      params += "&markers=size:small%7Ccolor:red%7C#{self.place.latitude},#{self.place.longitude}"
+    end
+    base_str + params
+  end
+
   filterrific(
       default_filter_params: {},
       available_filters: [

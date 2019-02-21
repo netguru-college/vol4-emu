@@ -25,6 +25,7 @@ gem 'cloudinary'
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'pry-rails'
 gem 'filterrific'
+gem 'geocoder'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 

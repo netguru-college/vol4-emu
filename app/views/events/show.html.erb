@@ -105,9 +105,11 @@
           <strong>Where? </strong><%= @event.place.name %>
         </p>
 
-        <p>
-          <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
-        </p>
+            <p>
+                <% map_href = @event.place_map_href %>
+                <%= link_to image_tag(map_href, alt: "Map"),
+                "https://www.google.com/maps/search/?api=1&query=#{ u @event.place.name }", target: :_blank %>
+            </p>
 
         <p>
           <% if !@event.place.owner.blank? %>
