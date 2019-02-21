@@ -25,9 +25,11 @@ class Event < ApplicationRecord
 
   def create_place_with_coords(attributes)
     self.create_place(attributes)
-    data = Geocoder.search(self.place.name).first.coordinates
-    self.place.latitude = data[0]
-    self.place.longitude = data[1]
+    data = Geocoder.search(self.place.name).first&.coordinates
+    if data
+      self.place.latitude = (data[0] if data) || 0
+      self.place.longitude = (data[1] if data) || 0
+    end
   end
 
   filterrific(
