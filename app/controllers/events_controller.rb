@@ -19,6 +19,7 @@ class EventsController < ApplicationController
         sanitize_params: true,
       ) || return
       @events = @filterrific.find.page params[:page]
+      @events = @events.order('created_at DESC')
 
       respond_to do |format|
         format.html
