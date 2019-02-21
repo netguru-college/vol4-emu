@@ -94,7 +94,8 @@
           </p>
 
             <p>
-              <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=17&size=200x200&markers=size:small&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+                <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@event.place.name}&zoom=14&size=200x200&markers=size:small%7Ccolor:red%7C#{@event.place.latitude},#{@event.place.longitude}&key=#{Rails.application.credentials.google_maps_api_key}", 
+                alt: "Map"), "https://www.google.com/maps/search/?api=1&query=#{ u @event.place.name }" %>
             </p>
 
             <p>

@@ -24,6 +24,13 @@ class Event < ApplicationRecord
     self.participations.where.not(role: "owner").map(&:user)
   end
 
+  def create_place_with_coords(attributes)
+    self.create_place(attributes)
+    data = Geocoder.search(self.place.name).first.coordinates
+    self.place.latitude = data[0]
+    self.place.longitude = data[1]
+  end
+
   filterrific(
       default_filter_params: {},
       available_filters: [

@@ -46,7 +46,8 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.create_event_as_owner(event_params)
-    @event.create_place(event_params[:place_attributes])
+    # @event.create_place(event_params[:place_attributes])
+    @event.create_place_with_coords(event_params[:place_attributes])
     authorize @event
 
     if @event.save
