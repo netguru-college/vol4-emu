@@ -107,7 +107,7 @@
 
             <p>
                 <% map_href = @event.place_map_href %>
-                <%= link_to image_tag(map_href, alt: "Map"), 
+                <%= link_to image_tag(map_href, alt: "Map"),
                 "https://www.google.com/maps/search/?api=1&query=#{ u @event.place.name }", target: :_blank %>
             </p>
 
