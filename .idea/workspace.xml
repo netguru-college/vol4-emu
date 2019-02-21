@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21d185fc-1fde-44d2-985a-09c89474b741" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/images/thumb_avatar.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/uploaders/avatar_uploader.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploaders/avatar_uploader.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/validators/event_is_full_validator.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/validators/event_is_full_validator.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/validators/start_date_before_end_date_validator.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/validators/start_date_before_end_date_validator.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/events_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/events_controller.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -39,7 +35,7 @@
           <entry key="gitignore" value="2" />
           <entry key="html" value="1" />
           <entry key="pid" value="5" />
-          <entry key="rb" value="114" />
+          <entry key="rb" value="115" />
           <entry key="scss" value="2" />
           <entry key="xml" value="1" />
           <entry key="yml" value="1" />
@@ -50,7 +46,7 @@
           <entry key="HTML" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="RHTML" value="22" />
-          <entry key="Ruby" value="120" />
+          <entry key="Ruby" value="121" />
           <entry key="SCSS" value="2" />
           <entry key="XML" value="1" />
           <entry key="YAML" value="1" />
@@ -61,25 +57,25 @@
           <entry key="Gemfile" value="36" />
           <entry key="erb" value="381" />
           <entry key="gitignore" value="1" />
-          <entry key="rb" value="2496" />
+          <entry key="rb" value="2557" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="RHTML" value="381" />
-          <entry key="Ruby" value="2532" />
+          <entry key="Ruby" value="2593" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/validators/event_is_full_validator.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -126,19 +122,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/models/event_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="82" column="58" selection-start-line="82" selection-start-column="58" selection-end-line="82" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -213,9 +209,9 @@
         <option value="$PROJECT_DIR$/app/views/events/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
         <option value="$PROJECT_DIR$/app/validators/event_cannot_be_in_past_validator.rb" />
         <option value="$PROJECT_DIR$/app/validators/event_is_full_validator.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
       </list>
     </option>
   </component>
@@ -231,8 +227,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="605" />
-    <option name="y" value="341" />
+    <option name="x" value="172" />
+    <option name="y" value="532" />
     <option name="width" value="1677" />
     <option name="height" value="789" />
   </component>
@@ -546,7 +542,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61260000" />
+    <option name="totallyTimeSpent" value="62048000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -774,13 +770,6 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/participations_controller.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -838,7 +827,14 @@
     <entry file="file://$PROJECT_DIR$/app/validators/event_is_full_validator.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="82" column="58" selection-start-line="82" selection-start-column="58" selection-end-line="82" selection-end-column="58" />
         </state>
       </provider>
     </entry>

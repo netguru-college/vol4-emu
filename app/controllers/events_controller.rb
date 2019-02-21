@@ -77,12 +77,10 @@ class EventsController < ApplicationController
     if @event.users.size < @event.capacity
       @event.users << current_user
       @event.participations.find_by(user: current_user).participant!
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path) and return
     end
     flash[:danger] = "This event is full"
-    redirect_back(fallback_location: root_path)
-    return
-
+    redirect_back(fallback_location: root_path) and return
   end
 
   def leave
