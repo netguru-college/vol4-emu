@@ -16,6 +16,8 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :sport
   accepts_nested_attributes_for :place
 
+  paginates_per 7
+
   def owner
     self.participations.find_by(role: "owner")&.user
   end
