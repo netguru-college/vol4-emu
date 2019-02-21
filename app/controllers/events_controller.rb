@@ -107,5 +107,4 @@ class EventsController < ApplicationController
                 place_attributes: [:name, :owner, :phone_number])
   end
 
-
 end
