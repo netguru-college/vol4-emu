@@ -101,17 +101,19 @@
             <p>    <%= link_to 'Join', join_event_path(@event), class: "btn btn-primary join-leave" if policy(@event).join? %></p>
           <% end %>
         </div>
-        <p>
+        <div>
           <strong>Where? </strong><%= @event.place.name %>
-        </p>
+        </div>
 
-            <p>
-                <% map_href = @event.place_map_href %>
-                <%= link_to image_tag(map_href, alt: "Map"),
-                "https://www.google.com/maps/search/?api=1&query=#{ u @event.place.name }", target: :_blank %>
-            </p>
+        <div>
+          <%= render 'location' %>
+        </div>
 
-        <p>
+        <div>
+          <%= render 'weather' %>
+        </div>
+
+        <div>
           <% if !@event.place.owner.blank? %>
             <strong>Place owner:</strong>
             <%= @event.place.owner %>
@@ -121,7 +123,7 @@
             <strong>Contact owner:</strong>
             <%= @event.place.phone_number %>
           <% end %>
-        </p>
+        </div>
       </div>
       <div>
       </div>
